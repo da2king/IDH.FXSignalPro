@@ -1,0 +1,88 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{10670204-67F6-41D6-9B06-953A3A898760}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>IDH.FxSignalPro.Bll</RootNamespace>
+    <AssemblyName>IDH.FxSignalPro.Bll</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="IDH.Frameworks.Bll">
+      <HintPath>..\..\..\Projects\IDH.Frameworks\IDH.Frameworks.Bll\bin\Debug\IDH.Frameworks.Bll.dll</HintPath>
+    </Reference>
+    <Reference Include="IDH.Frameworks.Repository">
+      <HintPath>..\..\..\Projects\IDH.Frameworks\IDH.Frameworks.Repository\bin\Debug\IDH.Frameworks.Repository.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Providers\CommentBll.cs" />
+    <Compile Include="Providers\CurrencyPairBll.cs" />
+    <Compile Include="Providers\SellerProfileBll.cs" />
+    <Compile Include="Providers\SignalBll.cs" />
+    <Compile Include="Providers\SupportedSellingCurrencyBll.cs" />
+    <Compile Include="Providers\TimeFrameBll.cs" />
+    <Compile Include="Providers\UserBll.cs" />
+    <Compile Include="Providers\UserSellerFollowingBll.cs" />
+    <Compile Include="Providers\UserSignalBll.cs" />
+    <Compile Include="Providers\UserSignalLikeBll.cs" />
+    <Compile Include="Services\ICommentBll.cs" />
+    <Compile Include="Services\ICurrencyPairBll.cs" />
+    <Compile Include="Services\ISellerProfileBll.cs" />
+    <Compile Include="Services\ISignalBll.cs" />
+    <Compile Include="Services\ISupportedSellingCurrencyBll.cs" />
+    <Compile Include="Services\ITimeFrameBll.cs" />
+    <Compile Include="Services\IUserBll.cs" />
+    <Compile Include="Services\IUserSellerFollowingBll.cs" />
+    <Compile Include="Services\IUserSignalBll.cs" />
+    <Compile Include="Services\IUserSignalLikeBll.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\IDH.FxSignalPro.Data\IDH.FxSignalPro.Data.csproj">
+      <Project>{c6a24057-3778-4382-888d-4c59b1378ad1}</Project>
+      <Name>IDH.FxSignalPro.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\IDH.FxSignalPro.Models\IDH.FxSignalPro.Models.csproj">
+      <Project>{7a08bc5a-3d6d-4edd-9e79-661515b92ce9}</Project>
+      <Name>IDH.FxSignalPro.Models</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

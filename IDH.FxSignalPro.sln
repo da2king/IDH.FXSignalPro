@@ -1,0 +1,48 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.31101.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IDH.FxSignalPro.Data", "IDH.FxSignalPro.Data\IDH.FxSignalPro.Data.csproj", "{C6A24057-3778-4382-888D-4C59B1378AD1}"
+EndProject
+Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "IDH.FxSignalProDb", "IDH.FxSignalProDb\IDH.FxSignalProDb.sqlproj", "{B459D469-C633-41A2-8CE7-D3281720EC04}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IDH.FxSignalPro.Bll", "IDH.FxSignalPro.Bll\IDH.FxSignalPro.Bll.csproj", "{10670204-67F6-41D6-9B06-953A3A898760}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IDH.FxSignalPro.Models", "IDH.FxSignalPro.Models\IDH.FxSignalPro.Models.csproj", "{7A08BC5A-3D6D-4EDD-9E79-661515B92CE9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IDH.FxSignalPro.Api", "IDH.FxSignalPro.Api\IDH.FxSignalPro.Api.csproj", "{B5E1D438-5574-4FC2-A623-00EAC1EDB6DF}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{C6A24057-3778-4382-888D-4C59B1378AD1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C6A24057-3778-4382-888D-4C59B1378AD1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C6A24057-3778-4382-888D-4C59B1378AD1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C6A24057-3778-4382-888D-4C59B1378AD1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B459D469-C633-41A2-8CE7-D3281720EC04}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B459D469-C633-41A2-8CE7-D3281720EC04}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B459D469-C633-41A2-8CE7-D3281720EC04}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{B459D469-C633-41A2-8CE7-D3281720EC04}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B459D469-C633-41A2-8CE7-D3281720EC04}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B459D469-C633-41A2-8CE7-D3281720EC04}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{10670204-67F6-41D6-9B06-953A3A898760}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{10670204-67F6-41D6-9B06-953A3A898760}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{10670204-67F6-41D6-9B06-953A3A898760}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{10670204-67F6-41D6-9B06-953A3A898760}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7A08BC5A-3D6D-4EDD-9E79-661515B92CE9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7A08BC5A-3D6D-4EDD-9E79-661515B92CE9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7A08BC5A-3D6D-4EDD-9E79-661515B92CE9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7A08BC5A-3D6D-4EDD-9E79-661515B92CE9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B5E1D438-5574-4FC2-A623-00EAC1EDB6DF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B5E1D438-5574-4FC2-A623-00EAC1EDB6DF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B5E1D438-5574-4FC2-A623-00EAC1EDB6DF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B5E1D438-5574-4FC2-A623-00EAC1EDB6DF}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

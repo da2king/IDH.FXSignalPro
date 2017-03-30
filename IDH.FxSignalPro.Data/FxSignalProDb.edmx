@@ -1,0 +1,870 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="FxSignalProModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Comments">
+          <Key>
+            <PropertyRef Name="CommentId" />
+          </Key>
+          <Property Name="CommentId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="UserId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="SignalId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Message" Type="varchar" MaxLength="300" Nullable="false" />
+          <Property Name="Created" Type="datetime" Nullable="false" />
+          <Property Name="Deleted" Type="datetime" Nullable="false" />
+          <Property Name="IsPublished" Type="bit" Nullable="false" />
+          <Property Name="IsPreSaleComment" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CurrencyPairs">
+          <Key>
+            <PropertyRef Name="CurrencyPairId" />
+          </Key>
+          <Property Name="CurrencyPairId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="ShortName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="LongName" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="Created" Type="datetime" Nullable="false" />
+          <Property Name="Deleted" Type="datetime" Nullable="false" />
+          <Property Name="Modified" Type="datetime" Nullable="false" />
+          <Property Name="ModifiedBy" Type="varchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <EntityType Name="SellerProfiles">
+          <Key>
+            <PropertyRef Name="SellerProfileId" />
+          </Key>
+          <Property Name="SellerProfileId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="SellerName" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="Created" Type="datetime" Nullable="false" />
+          <Property Name="Deleted" Type="datetime" Nullable="false" />
+          <Property Name="Modified" Type="datetime" Nullable="false" />
+          <Property Name="ModifiledBy" Type="varchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Signals">
+          <Key>
+            <PropertyRef Name="SignalId" />
+          </Key>
+          <Property Name="SignalId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="SellerProfileId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="CurrencyPairId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="SupportedSellCurrencyId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="TimeFrameId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="ExpectedStartDate" Type="datetime" Nullable="false" />
+          <Property Name="ExpectedEndDate" Type="datetime" Nullable="false" />
+          <Property Name="StopLoss" Type="decimal" Precision="11" Scale="5" Nullable="false" />
+          <Property Name="EntryPoint" Type="decimal" Precision="11" Scale="5" Nullable="false" />
+          <Property Name="TakeProfit" Type="decimal" Precision="11" Scale="5" Nullable="false" />
+          <Property Name="SellingAmount" Type="decimal" Precision="11" Scale="3" Nullable="false" />
+          <Property Name="PreSaleDescription" Type="varchar" MaxLength="150" Nullable="false" />
+          <Property Name="PostSaleDescription" Type="varchar" MaxLength="300" Nullable="false" />
+          <Property Name="IsPublished" Type="bit" Nullable="false" />
+          <Property Name="Created" Type="datetime" Nullable="false" />
+          <Property Name="Deleted" Type="datetime" Nullable="false" />
+          <Property Name="Modified" Type="datetime" Nullable="false" />
+          <Property Name="ModifiedBy" Type="varchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <EntityType Name="SupportedSellingCurrencies">
+          <Key>
+            <PropertyRef Name="SupportedSellingCurrencyId" />
+          </Key>
+          <Property Name="SupportedSellingCurrencyId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="ShortName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="LongName" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="Symbol" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="Created" Type="datetime" Nullable="false" />
+          <Property Name="Deleted" Type="datetime" Nullable="false" />
+          <Property Name="Modified" Type="datetime" Nullable="false" />
+          <Property Name="ModifiedBy" Type="varchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="TimeFrames">
+          <Key>
+            <PropertyRef Name="TimeFrameId" />
+          </Key>
+          <Property Name="TimeFrameId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="ShortName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="LongName" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="Created" Type="datetime" Nullable="false" />
+          <Property Name="Deleted" Type="datetime" Nullable="false" />
+          <Property Name="Modified" Type="datetime" Nullable="false" />
+          <Property Name="ModifiedBy" Type="varchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Users">
+          <Key>
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="UserId" Type="uniqueidentifier" Nullable="false" />
+        </EntityType>
+        <EntityType Name="UserSellerFollowings">
+          <Key>
+            <PropertyRef Name="UserId" />
+            <PropertyRef Name="SellerProfileId" />
+          </Key>
+          <Property Name="UserId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="SellerProfileId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Created" Type="datetime" Nullable="false" />
+          <Property Name="NotificationSubscribe" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="UserSignalLikes">
+          <Key>
+            <PropertyRef Name="UserId" />
+            <PropertyRef Name="SignalID" />
+          </Key>
+          <Property Name="UserId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="SignalID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Created" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="UserSignals">
+          <Key>
+            <PropertyRef Name="UserId" />
+            <PropertyRef Name="SignalId" />
+          </Key>
+          <Property Name="UserId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="SignalId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="IsAccurate" Type="bit" />
+          <Property Name="Created" Type="datetime" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_Comments_Signals">
+          <End Role="Signals" Type="Self.Signals" Multiplicity="1" />
+          <End Role="Comments" Type="Self.Comments" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Signals">
+              <PropertyRef Name="SignalId" />
+            </Principal>
+            <Dependent Role="Comments">
+              <PropertyRef Name="SignalId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Comments_Users">
+          <End Role="Users" Type="Self.Users" Multiplicity="1" />
+          <End Role="Comments" Type="Self.Comments" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="Comments">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Signals_CurrencyPairs">
+          <End Role="CurrencyPairs" Type="Self.CurrencyPairs" Multiplicity="1" />
+          <End Role="Signals" Type="Self.Signals" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CurrencyPairs">
+              <PropertyRef Name="CurrencyPairId" />
+            </Principal>
+            <Dependent Role="Signals">
+              <PropertyRef Name="CurrencyPairId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Signals_SellerProfiles">
+          <End Role="SellerProfiles" Type="Self.SellerProfiles" Multiplicity="1" />
+          <End Role="Signals" Type="Self.Signals" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SellerProfiles">
+              <PropertyRef Name="SellerProfileId" />
+            </Principal>
+            <Dependent Role="Signals">
+              <PropertyRef Name="SellerProfileId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Signals_SupportedSellingCurrencies">
+          <End Role="SupportedSellingCurrencies" Type="Self.SupportedSellingCurrencies" Multiplicity="1" />
+          <End Role="Signals" Type="Self.Signals" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SupportedSellingCurrencies">
+              <PropertyRef Name="SupportedSellingCurrencyId" />
+            </Principal>
+            <Dependent Role="Signals">
+              <PropertyRef Name="SupportedSellCurrencyId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Signals_TimeFrames">
+          <End Role="TimeFrames" Type="Self.TimeFrames" Multiplicity="1" />
+          <End Role="Signals" Type="Self.Signals" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TimeFrames">
+              <PropertyRef Name="TimeFrameId" />
+            </Principal>
+            <Dependent Role="Signals">
+              <PropertyRef Name="TimeFrameId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserSellerFollowings_SellerProfiles">
+          <End Role="SellerProfiles" Type="Self.SellerProfiles" Multiplicity="1" />
+          <End Role="UserSellerFollowings" Type="Self.UserSellerFollowings" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SellerProfiles">
+              <PropertyRef Name="SellerProfileId" />
+            </Principal>
+            <Dependent Role="UserSellerFollowings">
+              <PropertyRef Name="SellerProfileId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserSellerFollowings_Users">
+          <End Role="Users" Type="Self.Users" Multiplicity="1" />
+          <End Role="UserSellerFollowings" Type="Self.UserSellerFollowings" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="UserSellerFollowings">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserSignalLikes_Signals">
+          <End Role="Signals" Type="Self.Signals" Multiplicity="1" />
+          <End Role="UserSignalLikes" Type="Self.UserSignalLikes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Signals">
+              <PropertyRef Name="SignalId" />
+            </Principal>
+            <Dependent Role="UserSignalLikes">
+              <PropertyRef Name="SignalID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserSignalLikes_Users">
+          <End Role="Users" Type="Self.Users" Multiplicity="1" />
+          <End Role="UserSignalLikes" Type="Self.UserSignalLikes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="UserSignalLikes">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserSignals_Signals">
+          <End Role="Signals" Type="Self.Signals" Multiplicity="1" />
+          <End Role="UserSignals" Type="Self.UserSignals" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Signals">
+              <PropertyRef Name="SignalId" />
+            </Principal>
+            <Dependent Role="UserSignals">
+              <PropertyRef Name="SignalId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserSignals_Users">
+          <End Role="Users" Type="Self.Users" Multiplicity="1" />
+          <End Role="UserSignals" Type="Self.UserSignals" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="UserSignals">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="FxSignalProModelStoreContainer">
+          <EntitySet Name="Comments" EntityType="Self.Comments" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CurrencyPairs" EntityType="Self.CurrencyPairs" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SellerProfiles" EntityType="Self.SellerProfiles" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Signals" EntityType="Self.Signals" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SupportedSellingCurrencies" EntityType="Self.SupportedSellingCurrencies" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TimeFrames" EntityType="Self.TimeFrames" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UserSellerFollowings" EntityType="Self.UserSellerFollowings" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UserSignalLikes" EntityType="Self.UserSignalLikes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UserSignals" EntityType="Self.UserSignals" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Comments_Signals" Association="Self.FK_Comments_Signals">
+            <End Role="Signals" EntitySet="Signals" />
+            <End Role="Comments" EntitySet="Comments" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Comments_Users" Association="Self.FK_Comments_Users">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Comments" EntitySet="Comments" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Signals_CurrencyPairs" Association="Self.FK_Signals_CurrencyPairs">
+            <End Role="CurrencyPairs" EntitySet="CurrencyPairs" />
+            <End Role="Signals" EntitySet="Signals" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Signals_SellerProfiles" Association="Self.FK_Signals_SellerProfiles">
+            <End Role="SellerProfiles" EntitySet="SellerProfiles" />
+            <End Role="Signals" EntitySet="Signals" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Signals_SupportedSellingCurrencies" Association="Self.FK_Signals_SupportedSellingCurrencies">
+            <End Role="SupportedSellingCurrencies" EntitySet="SupportedSellingCurrencies" />
+            <End Role="Signals" EntitySet="Signals" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Signals_TimeFrames" Association="Self.FK_Signals_TimeFrames">
+            <End Role="TimeFrames" EntitySet="TimeFrames" />
+            <End Role="Signals" EntitySet="Signals" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserSellerFollowings_SellerProfiles" Association="Self.FK_UserSellerFollowings_SellerProfiles">
+            <End Role="SellerProfiles" EntitySet="SellerProfiles" />
+            <End Role="UserSellerFollowings" EntitySet="UserSellerFollowings" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserSellerFollowings_Users" Association="Self.FK_UserSellerFollowings_Users">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="UserSellerFollowings" EntitySet="UserSellerFollowings" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserSignalLikes_Signals" Association="Self.FK_UserSignalLikes_Signals">
+            <End Role="Signals" EntitySet="Signals" />
+            <End Role="UserSignalLikes" EntitySet="UserSignalLikes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserSignalLikes_Users" Association="Self.FK_UserSignalLikes_Users">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="UserSignalLikes" EntitySet="UserSignalLikes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserSignals_Signals" Association="Self.FK_UserSignals_Signals">
+            <End Role="Signals" EntitySet="Signals" />
+            <End Role="UserSignals" EntitySet="UserSignals" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserSignals_Users" Association="Self.FK_UserSignals_Users">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="UserSignals" EntitySet="UserSignals" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="FxSignalProModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Comment">
+          <Key>
+            <PropertyRef Name="CommentId" />
+          </Key>
+          <Property Name="CommentId" Type="Guid" Nullable="false" />
+          <Property Name="UserId" Type="Guid" Nullable="false" />
+          <Property Name="SignalId" Type="Guid" Nullable="false" />
+          <Property Name="Message" Type="String" MaxLength="300" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Created" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Deleted" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="IsPublished" Type="Boolean" Nullable="false" />
+          <Property Name="IsPreSaleComment" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Signal" Relationship="Self.FK_Comments_Signals" FromRole="Comments" ToRole="Signals" />
+          <NavigationProperty Name="User" Relationship="Self.FK_Comments_Users" FromRole="Comments" ToRole="Users" />
+        </EntityType>
+        <EntityType Name="CurrencyPair">
+          <Key>
+            <PropertyRef Name="CurrencyPairId" />
+          </Key>
+          <Property Name="CurrencyPairId" Type="Guid" Nullable="false" />
+          <Property Name="ShortName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="LongName" Type="String" Nullable="false" />
+          <Property Name="Created" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Deleted" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Modified" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ModifiedBy" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Signals" Relationship="Self.FK_Signals_CurrencyPairs" FromRole="CurrencyPairs" ToRole="Signals" />
+        </EntityType>
+        <EntityType Name="SellerProfile">
+          <Key>
+            <PropertyRef Name="SellerProfileId" />
+          </Key>
+          <Property Name="SellerProfileId" Type="Guid" Nullable="false" />
+          <Property Name="SellerName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Created" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Deleted" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Modified" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ModifiledBy" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Signals" Relationship="Self.FK_Signals_SellerProfiles" FromRole="SellerProfiles" ToRole="Signals" />
+          <NavigationProperty Name="UserSellerFollowings" Relationship="Self.FK_UserSellerFollowings_SellerProfiles" FromRole="SellerProfiles" ToRole="UserSellerFollowings" />
+        </EntityType>
+        <EntityType Name="Signal">
+          <Key>
+            <PropertyRef Name="SignalId" />
+          </Key>
+          <Property Name="SignalId" Type="Guid" Nullable="false" />
+          <Property Name="SellerProfileId" Type="Guid" Nullable="false" />
+          <Property Name="CurrencyPairId" Type="Guid" Nullable="false" />
+          <Property Name="SupportedSellCurrencyId" Type="Guid" Nullable="false" />
+          <Property Name="TimeFrameId" Type="Guid" Nullable="false" />
+          <Property Name="ExpectedStartDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ExpectedEndDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="StopLoss" Type="Decimal" Precision="11" Scale="5" Nullable="false" />
+          <Property Name="EntryPoint" Type="Decimal" Precision="11" Scale="5" Nullable="false" />
+          <Property Name="TakeProfit" Type="Decimal" Precision="11" Scale="5" Nullable="false" />
+          <Property Name="SellingAmount" Type="Decimal" Precision="11" Scale="3" Nullable="false" />
+          <Property Name="PreSaleDescription" Type="String" MaxLength="150" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="PostSaleDescription" Type="String" MaxLength="300" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="IsPublished" Type="Boolean" Nullable="false" />
+          <Property Name="Created" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Deleted" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Modified" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ModifiedBy" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Comments" Relationship="Self.FK_Comments_Signals" FromRole="Signals" ToRole="Comments" />
+          <NavigationProperty Name="CurrencyPair" Relationship="Self.FK_Signals_CurrencyPairs" FromRole="Signals" ToRole="CurrencyPairs" />
+          <NavigationProperty Name="SellerProfile" Relationship="Self.FK_Signals_SellerProfiles" FromRole="Signals" ToRole="SellerProfiles" />
+          <NavigationProperty Name="SupportedSellingCurrency" Relationship="Self.FK_Signals_SupportedSellingCurrencies" FromRole="Signals" ToRole="SupportedSellingCurrencies" />
+          <NavigationProperty Name="TimeFrame" Relationship="Self.FK_Signals_TimeFrames" FromRole="Signals" ToRole="TimeFrames" />
+          <NavigationProperty Name="UserSignalLikes" Relationship="Self.FK_UserSignalLikes_Signals" FromRole="Signals" ToRole="UserSignalLikes" />
+          <NavigationProperty Name="UserSignals" Relationship="Self.FK_UserSignals_Signals" FromRole="Signals" ToRole="UserSignals" />
+        </EntityType>
+        <EntityType Name="SupportedSellingCurrency">
+          <Key>
+            <PropertyRef Name="SupportedSellingCurrencyId" />
+          </Key>
+          <Property Name="SupportedSellingCurrencyId" Type="Guid" Nullable="false" />
+          <Property Name="ShortName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="LongName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Symbol" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Created" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Deleted" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Modified" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ModifiedBy" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Signals" Relationship="Self.FK_Signals_SupportedSellingCurrencies" FromRole="SupportedSellingCurrencies" ToRole="Signals" />
+        </EntityType>
+        <EntityType Name="sysdiagram">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="TimeFrame">
+          <Key>
+            <PropertyRef Name="TimeFrameId" />
+          </Key>
+          <Property Name="TimeFrameId" Type="Guid" Nullable="false" />
+          <Property Name="ShortName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="LongName" Type="String" Nullable="false" />
+          <Property Name="Created" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Deleted" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Modified" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ModifiedBy" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Signals" Relationship="Self.FK_Signals_TimeFrames" FromRole="TimeFrames" ToRole="Signals" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="UserId" Type="Guid" Nullable="false" />
+          <NavigationProperty Name="Comments" Relationship="Self.FK_Comments_Users" FromRole="Users" ToRole="Comments" />
+          <NavigationProperty Name="UserSellerFollowings" Relationship="Self.FK_UserSellerFollowings_Users" FromRole="Users" ToRole="UserSellerFollowings" />
+          <NavigationProperty Name="UserSignalLikes" Relationship="Self.FK_UserSignalLikes_Users" FromRole="Users" ToRole="UserSignalLikes" />
+          <NavigationProperty Name="UserSignals" Relationship="Self.FK_UserSignals_Users" FromRole="Users" ToRole="UserSignals" />
+        </EntityType>
+        <EntityType Name="UserSellerFollowing">
+          <Key>
+            <PropertyRef Name="UserId" />
+            <PropertyRef Name="SellerProfileId" />
+          </Key>
+          <Property Name="UserId" Type="Guid" Nullable="false" />
+          <Property Name="SellerProfileId" Type="Guid" Nullable="false" />
+          <Property Name="Created" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="NotificationSubscribe" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="SellerProfile" Relationship="Self.FK_UserSellerFollowings_SellerProfiles" FromRole="UserSellerFollowings" ToRole="SellerProfiles" />
+          <NavigationProperty Name="User" Relationship="Self.FK_UserSellerFollowings_Users" FromRole="UserSellerFollowings" ToRole="Users" />
+        </EntityType>
+        <EntityType Name="UserSignalLike">
+          <Key>
+            <PropertyRef Name="UserId" />
+            <PropertyRef Name="SignalID" />
+          </Key>
+          <Property Name="UserId" Type="Guid" Nullable="false" />
+          <Property Name="SignalID" Type="Guid" Nullable="false" />
+          <Property Name="Created" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="Signal" Relationship="Self.FK_UserSignalLikes_Signals" FromRole="UserSignalLikes" ToRole="Signals" />
+          <NavigationProperty Name="User" Relationship="Self.FK_UserSignalLikes_Users" FromRole="UserSignalLikes" ToRole="Users" />
+        </EntityType>
+        <EntityType Name="UserSignal">
+          <Key>
+            <PropertyRef Name="UserId" />
+            <PropertyRef Name="SignalId" />
+          </Key>
+          <Property Name="UserId" Type="Guid" Nullable="false" />
+          <Property Name="SignalId" Type="Guid" Nullable="false" />
+          <Property Name="IsAccurate" Type="Boolean" />
+          <Property Name="Created" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="Signal" Relationship="Self.FK_UserSignals_Signals" FromRole="UserSignals" ToRole="Signals" />
+          <NavigationProperty Name="User" Relationship="Self.FK_UserSignals_Users" FromRole="UserSignals" ToRole="Users" />
+        </EntityType>
+        <Association Name="FK_Comments_Signals">
+          <End Role="Signals" Type="Self.Signal" Multiplicity="1" />
+          <End Role="Comments" Type="Self.Comment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Signals">
+              <PropertyRef Name="SignalId" />
+            </Principal>
+            <Dependent Role="Comments">
+              <PropertyRef Name="SignalId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Comments_Users">
+          <End Role="Users" Type="Self.User" Multiplicity="1" />
+          <End Role="Comments" Type="Self.Comment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="Comments">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Signals_CurrencyPairs">
+          <End Role="CurrencyPairs" Type="Self.CurrencyPair" Multiplicity="1" />
+          <End Role="Signals" Type="Self.Signal" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CurrencyPairs">
+              <PropertyRef Name="CurrencyPairId" />
+            </Principal>
+            <Dependent Role="Signals">
+              <PropertyRef Name="CurrencyPairId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Signals_SellerProfiles">
+          <End Role="SellerProfiles" Type="Self.SellerProfile" Multiplicity="1" />
+          <End Role="Signals" Type="Self.Signal" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SellerProfiles">
+              <PropertyRef Name="SellerProfileId" />
+            </Principal>
+            <Dependent Role="Signals">
+              <PropertyRef Name="SellerProfileId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserSellerFollowings_SellerProfiles">
+          <End Role="SellerProfiles" Type="Self.SellerProfile" Multiplicity="1" />
+          <End Role="UserSellerFollowings" Type="Self.UserSellerFollowing" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SellerProfiles">
+              <PropertyRef Name="SellerProfileId" />
+            </Principal>
+            <Dependent Role="UserSellerFollowings">
+              <PropertyRef Name="SellerProfileId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Signals_SupportedSellingCurrencies">
+          <End Role="SupportedSellingCurrencies" Type="Self.SupportedSellingCurrency" Multiplicity="1" />
+          <End Role="Signals" Type="Self.Signal" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SupportedSellingCurrencies">
+              <PropertyRef Name="SupportedSellingCurrencyId" />
+            </Principal>
+            <Dependent Role="Signals">
+              <PropertyRef Name="SupportedSellCurrencyId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Signals_TimeFrames">
+          <End Role="TimeFrames" Type="Self.TimeFrame" Multiplicity="1" />
+          <End Role="Signals" Type="Self.Signal" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TimeFrames">
+              <PropertyRef Name="TimeFrameId" />
+            </Principal>
+            <Dependent Role="Signals">
+              <PropertyRef Name="TimeFrameId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserSignalLikes_Signals">
+          <End Role="Signals" Type="Self.Signal" Multiplicity="1" />
+          <End Role="UserSignalLikes" Type="Self.UserSignalLike" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Signals">
+              <PropertyRef Name="SignalId" />
+            </Principal>
+            <Dependent Role="UserSignalLikes">
+              <PropertyRef Name="SignalID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserSignals_Signals">
+          <End Role="Signals" Type="Self.Signal" Multiplicity="1" />
+          <End Role="UserSignals" Type="Self.UserSignal" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Signals">
+              <PropertyRef Name="SignalId" />
+            </Principal>
+            <Dependent Role="UserSignals">
+              <PropertyRef Name="SignalId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserSellerFollowings_Users">
+          <End Role="Users" Type="Self.User" Multiplicity="1" />
+          <End Role="UserSellerFollowings" Type="Self.UserSellerFollowing" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="UserSellerFollowings">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserSignalLikes_Users">
+          <End Role="Users" Type="Self.User" Multiplicity="1" />
+          <End Role="UserSignalLikes" Type="Self.UserSignalLike" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="UserSignalLikes">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserSignals_Users">
+          <End Role="Users" Type="Self.User" Multiplicity="1" />
+          <End Role="UserSignals" Type="Self.UserSignal" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="UserSignals">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="FxSignalProEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Comments" EntityType="Self.Comment" />
+          <EntitySet Name="CurrencyPairs" EntityType="Self.CurrencyPair" />
+          <EntitySet Name="SellerProfiles" EntityType="Self.SellerProfile" />
+          <EntitySet Name="Signals" EntityType="Self.Signal" />
+          <EntitySet Name="SupportedSellingCurrencies" EntityType="Self.SupportedSellingCurrency" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
+          <EntitySet Name="TimeFrames" EntityType="Self.TimeFrame" />
+          <EntitySet Name="Users" EntityType="Self.User" />
+          <EntitySet Name="UserSellerFollowings" EntityType="Self.UserSellerFollowing" />
+          <EntitySet Name="UserSignalLikes" EntityType="Self.UserSignalLike" />
+          <EntitySet Name="UserSignals" EntityType="Self.UserSignal" />
+          <AssociationSet Name="FK_Comments_Signals" Association="Self.FK_Comments_Signals">
+            <End Role="Signals" EntitySet="Signals" />
+            <End Role="Comments" EntitySet="Comments" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Comments_Users" Association="Self.FK_Comments_Users">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Comments" EntitySet="Comments" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Signals_CurrencyPairs" Association="Self.FK_Signals_CurrencyPairs">
+            <End Role="CurrencyPairs" EntitySet="CurrencyPairs" />
+            <End Role="Signals" EntitySet="Signals" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Signals_SellerProfiles" Association="Self.FK_Signals_SellerProfiles">
+            <End Role="SellerProfiles" EntitySet="SellerProfiles" />
+            <End Role="Signals" EntitySet="Signals" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserSellerFollowings_SellerProfiles" Association="Self.FK_UserSellerFollowings_SellerProfiles">
+            <End Role="SellerProfiles" EntitySet="SellerProfiles" />
+            <End Role="UserSellerFollowings" EntitySet="UserSellerFollowings" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Signals_SupportedSellingCurrencies" Association="Self.FK_Signals_SupportedSellingCurrencies">
+            <End Role="SupportedSellingCurrencies" EntitySet="SupportedSellingCurrencies" />
+            <End Role="Signals" EntitySet="Signals" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Signals_TimeFrames" Association="Self.FK_Signals_TimeFrames">
+            <End Role="TimeFrames" EntitySet="TimeFrames" />
+            <End Role="Signals" EntitySet="Signals" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserSignalLikes_Signals" Association="Self.FK_UserSignalLikes_Signals">
+            <End Role="Signals" EntitySet="Signals" />
+            <End Role="UserSignalLikes" EntitySet="UserSignalLikes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserSignals_Signals" Association="Self.FK_UserSignals_Signals">
+            <End Role="Signals" EntitySet="Signals" />
+            <End Role="UserSignals" EntitySet="UserSignals" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserSellerFollowings_Users" Association="Self.FK_UserSellerFollowings_Users">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="UserSellerFollowings" EntitySet="UserSellerFollowings" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserSignalLikes_Users" Association="Self.FK_UserSignalLikes_Users">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="UserSignalLikes" EntitySet="UserSignalLikes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserSignals_Users" Association="Self.FK_UserSignals_Users">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="UserSignals" EntitySet="UserSignals" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="FxSignalProModelStoreContainer" CdmEntityContainer="FxSignalProEntities">
+          <EntitySetMapping Name="Comments">
+            <EntityTypeMapping TypeName="FxSignalProModel.Comment">
+              <MappingFragment StoreEntitySet="Comments">
+                <ScalarProperty Name="CommentId" ColumnName="CommentId" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="SignalId" ColumnName="SignalId" />
+                <ScalarProperty Name="Message" ColumnName="Message" />
+                <ScalarProperty Name="Created" ColumnName="Created" />
+                <ScalarProperty Name="Deleted" ColumnName="Deleted" />
+                <ScalarProperty Name="IsPublished" ColumnName="IsPublished" />
+                <ScalarProperty Name="IsPreSaleComment" ColumnName="IsPreSaleComment" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CurrencyPairs">
+            <EntityTypeMapping TypeName="FxSignalProModel.CurrencyPair">
+              <MappingFragment StoreEntitySet="CurrencyPairs">
+                <ScalarProperty Name="CurrencyPairId" ColumnName="CurrencyPairId" />
+                <ScalarProperty Name="ShortName" ColumnName="ShortName" />
+                <ScalarProperty Name="LongName" ColumnName="LongName" />
+                <ScalarProperty Name="Created" ColumnName="Created" />
+                <ScalarProperty Name="Deleted" ColumnName="Deleted" />
+                <ScalarProperty Name="Modified" ColumnName="Modified" />
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SellerProfiles">
+            <EntityTypeMapping TypeName="FxSignalProModel.SellerProfile">
+              <MappingFragment StoreEntitySet="SellerProfiles">
+                <ScalarProperty Name="SellerProfileId" ColumnName="SellerProfileId" />
+                <ScalarProperty Name="SellerName" ColumnName="SellerName" />
+                <ScalarProperty Name="Created" ColumnName="Created" />
+                <ScalarProperty Name="Deleted" ColumnName="Deleted" />
+                <ScalarProperty Name="Modified" ColumnName="Modified" />
+                <ScalarProperty Name="ModifiledBy" ColumnName="ModifiledBy" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Signals">
+            <EntityTypeMapping TypeName="FxSignalProModel.Signal">
+              <MappingFragment StoreEntitySet="Signals">
+                <ScalarProperty Name="SignalId" ColumnName="SignalId" />
+                <ScalarProperty Name="SellerProfileId" ColumnName="SellerProfileId" />
+                <ScalarProperty Name="CurrencyPairId" ColumnName="CurrencyPairId" />
+                <ScalarProperty Name="SupportedSellCurrencyId" ColumnName="SupportedSellCurrencyId" />
+                <ScalarProperty Name="TimeFrameId" ColumnName="TimeFrameId" />
+                <ScalarProperty Name="ExpectedStartDate" ColumnName="ExpectedStartDate" />
+                <ScalarProperty Name="ExpectedEndDate" ColumnName="ExpectedEndDate" />
+                <ScalarProperty Name="StopLoss" ColumnName="StopLoss" />
+                <ScalarProperty Name="EntryPoint" ColumnName="EntryPoint" />
+                <ScalarProperty Name="TakeProfit" ColumnName="TakeProfit" />
+                <ScalarProperty Name="SellingAmount" ColumnName="SellingAmount" />
+                <ScalarProperty Name="PreSaleDescription" ColumnName="PreSaleDescription" />
+                <ScalarProperty Name="PostSaleDescription" ColumnName="PostSaleDescription" />
+                <ScalarProperty Name="IsPublished" ColumnName="IsPublished" />
+                <ScalarProperty Name="Created" ColumnName="Created" />
+                <ScalarProperty Name="Deleted" ColumnName="Deleted" />
+                <ScalarProperty Name="Modified" ColumnName="Modified" />
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SupportedSellingCurrencies">
+            <EntityTypeMapping TypeName="FxSignalProModel.SupportedSellingCurrency">
+              <MappingFragment StoreEntitySet="SupportedSellingCurrencies">
+                <ScalarProperty Name="SupportedSellingCurrencyId" ColumnName="SupportedSellingCurrencyId" />
+                <ScalarProperty Name="ShortName" ColumnName="ShortName" />
+                <ScalarProperty Name="LongName" ColumnName="LongName" />
+                <ScalarProperty Name="Symbol" ColumnName="Symbol" />
+                <ScalarProperty Name="Created" ColumnName="Created" />
+                <ScalarProperty Name="Deleted" ColumnName="Deleted" />
+                <ScalarProperty Name="Modified" ColumnName="Modified" />
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="FxSignalProModel.sysdiagram">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TimeFrames">
+            <EntityTypeMapping TypeName="FxSignalProModel.TimeFrame">
+              <MappingFragment StoreEntitySet="TimeFrames">
+                <ScalarProperty Name="TimeFrameId" ColumnName="TimeFrameId" />
+                <ScalarProperty Name="ShortName" ColumnName="ShortName" />
+                <ScalarProperty Name="LongName" ColumnName="LongName" />
+                <ScalarProperty Name="Created" ColumnName="Created" />
+                <ScalarProperty Name="Deleted" ColumnName="Deleted" />
+                <ScalarProperty Name="Modified" ColumnName="Modified" />
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Users">
+            <EntityTypeMapping TypeName="FxSignalProModel.User">
+              <MappingFragment StoreEntitySet="Users">
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UserSellerFollowings">
+            <EntityTypeMapping TypeName="FxSignalProModel.UserSellerFollowing">
+              <MappingFragment StoreEntitySet="UserSellerFollowings">
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="SellerProfileId" ColumnName="SellerProfileId" />
+                <ScalarProperty Name="Created" ColumnName="Created" />
+                <ScalarProperty Name="NotificationSubscribe" ColumnName="NotificationSubscribe" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UserSignalLikes">
+            <EntityTypeMapping TypeName="FxSignalProModel.UserSignalLike">
+              <MappingFragment StoreEntitySet="UserSignalLikes">
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="SignalID" ColumnName="SignalID" />
+                <ScalarProperty Name="Created" ColumnName="Created" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UserSignals">
+            <EntityTypeMapping TypeName="FxSignalProModel.UserSignal">
+              <MappingFragment StoreEntitySet="UserSignals">
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="SignalId" ColumnName="SignalId" />
+                <ScalarProperty Name="IsAccurate" ColumnName="IsAccurate" />
+                <ScalarProperty Name="Created" ColumnName="Created" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

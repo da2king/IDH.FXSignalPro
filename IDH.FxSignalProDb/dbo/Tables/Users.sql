@@ -1,0 +1,5 @@
+﻿CREATE TABLE [dbo].[Users] (
+    [UserId] UNIQUEIDENTIFIER NOT NULL,
+    CONSTRAINT [PK_Users] PRIMARY KEY CLUSTERED ([UserId] ASC)
+);
+
