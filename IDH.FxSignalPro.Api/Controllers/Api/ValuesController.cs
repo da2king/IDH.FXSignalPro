@@ -1,11 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net;
-using System.Net.Http;
+﻿using System.Collections.Generic;
 using System.Web.Http;
 
-namespace IDH.FxSignalPro.Api.Controllers
+namespace IDH.FxSignalPro.Api.Controllers.Api
 {
     public class ValuesController : ApiController
     {
